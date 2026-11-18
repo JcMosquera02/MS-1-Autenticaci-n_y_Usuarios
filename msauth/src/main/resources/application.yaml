@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: msauth
+
+  datasource:
+    url: jdbc:mysql://${MS1_DB_HOST:localhost}:${MS1_DB_PORT:3306}/${MS1_DB_NAME:msauth}?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: ${MS1_DB_USER:root}
+    password: ${MS1_DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: ${MS1_PORT:8081}
+
+ms1:
+  jwt:
+    secret: ${MS1_JWT_SECRET:}
+    expiration: ${MS1_JWT_EXPIRATION:86400000}
+  admin:
+    password: ${MS1_ADMIN_PASSWORD:}
